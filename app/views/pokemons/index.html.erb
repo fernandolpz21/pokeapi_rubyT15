@@ -1,0 +1,15 @@
+<h1>Pokemons</h1>
+
+<ul>
+  <% @pokemons.each do |pokemon| %>
+  <%# Add Pokemon with picture and link %>
+    <li>
+      <a href="<%= pokemon_path(pokemon) %>">
+        <%= pokemon.name %>
+        </a>
+      <%= image_tag pokemon.picture.url(:thumb) %>
+    </li>
+
+   
+  <% end %>
+</ul>
