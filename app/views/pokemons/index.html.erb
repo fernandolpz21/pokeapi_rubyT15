@@ -1,17 +1,21 @@
 <h1>Pokemons</h1>
 
-<p>
 
-</p>
 
 <ul>
   <% @pokemons.each do |pokemon| %>
 
   <%# Add Pokemon with picture and link %>
     <li>
-      <%= pokemon.name %>
+      <%= pokemon.name.capitalize %>
+      <p>Number: <%= pokemon.id %></p>
+      <% PokeApi.get(pokemon: pokemon.name).sprites.front_default%>
+
+
+
       <%# <p href="<%= pokemon_path(pokemon) %"></p>%>
       <%#= image_tag pokemon.picture.url(:thumb) %>
+
     </li>
 
 
