@@ -3,8 +3,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  root "pokemons#index"
+  # root "pokemons#index"
 
-  get "/pokemons", to: "pokemons#index"
-  get "/pokemons/:id", to: "pokemons#show"
+  # get "/pokemons", to: "pokemons#index"
+  # get "/pokemons/:id", to: "pokemons#show"
+
+  root 'pokemons#index'
+  resources :pokemons, only: [:index, :show]
 end
