@@ -1,15 +1,93 @@
-<%= form_with url: login_path, scope: :user do |form| %>
-  <div>
-    <%= form.label :email %>
-    <%= form.email_field :email, required: true %>
-  </div>
-  <div>
-    <%= form.label :password %>
-    <%= form.password_field :password, required: true %>
-  </div>
-  <%= form.submit "Sign In" %>
-<% end %>
+<style>
+  body {
+    background-image: url("https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77700838033.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: Georgia;
+  }
 
-<%# Add SignUp Link %>
+  .container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-top: 50px;
+  }
 
-<%= link_to "Sign Up", signup_path %>
+  .container h2 {
+    text-align: center;
+    color: #333;
+  }
+
+  .container form {
+    margin-top: 20px;
+  }
+
+  .container form div {
+    margin-bottom: 10px;
+  }
+
+  .container form label {
+    display: block;
+    font-weight: bold;
+  }
+
+  .container form input[type="email"],
+  .container form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+  }
+
+  .container form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  .container form input[type="submit"]:hover {
+    cursor: pointer;
+  }
+
+  .container form .sign-in-btn {
+    background: linear-gradient(to right, #FF8C00, #FF2F00);
+  }
+
+  .container form .sign-up-btn {
+    background: linear-gradient(to right, #008000, #00CED1);
+  }
+
+  .container form .sign-up-btn a {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #fff;
+  }
+
+</style>
+
+<div class="container">
+  <h2 class="text-center text-2xl text-gray-800">Sign In Pokemon Master</h2>
+  <%= form_with url: login_path, scope: :user do |form| %>
+    <div class="mb-4">
+      <%= form.label :email, class: "block font-bold" %>
+      <%= form.email_field :email, required: true, class: "w-full px-4 py-2 text-gray-700 bg-gray-200 rounded" %>
+    </div>
+    <div class="mb-4">
+      <%= form.label :password, class: "block font-bold" %>
+      <%= form.password_field :password, required: true, class: "w-full px-4 py-2 text-gray-700 bg-gray-200 rounded" %>
+    </div>
+    <%= form.submit "Sign In", class: "w-full px-4 py-2 mt-4 font-bold text-white bg-gradient-to-r from-pink-400 via-blue-500 to-indigo-600 rounded cursor-pointer hover:from-pink-500 hover:via-blue-600 hover:to-indigo-700 sign-in-btn" %>
+  <% end %>
+  <div class="text-center mt-4">
+    <%= link_to "Sign Up", signup_path, class: "text-blue no-underline sign-up-btn" %>
+  </div>
+</div>
