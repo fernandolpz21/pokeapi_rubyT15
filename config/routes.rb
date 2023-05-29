@@ -1,13 +1,23 @@
+# Rails.application.routes.draw do
+
+#   root 'pokemons#index'
+#   resources :pokemons, only: [:index, :show]
+# end
+
+
+
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root "static_pages#home"
 
-  # Defines the root path route ("/")
-  # root "articles#index"
-  # root "pokemons#index"
+  post "signup", to: "users#create"
+  get "signup", to: "users#new"
 
-  # get "/pokemons", to: "pokemons#index"
-  # get "/pokemons/:id", to: "pokemons#show"
+  post "login", to: "sessions#create"
+  get "login", to: "sessions#new"
+  delete "logout", to: "sessions#destroy"
 
-  root 'pokemons#index'
+  resources :confirmations, only: [:create, :edit, :new], param: :confirmation_token
+  resources :passwords, only: [:create, :edit, :new, :update], param: :password_reset_token
+
   resources :pokemons, only: [:index, :show]
 end

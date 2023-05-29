@@ -1,6 +1,11 @@
 require 'poke-api-v2'
 
 class PokemonsController < ApplicationController
+  before_action :redirect_if_not_signed_in
+
+  def redirect_if_not_signed_in
+    redirect_to root_path unless user_signed_in?
+  end
   def index
     fetch_pokemons_from_api
     @pokemons = Pokemon.all
